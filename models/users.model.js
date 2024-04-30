@@ -7,6 +7,12 @@ const getUsers = async () => {
   return rows;
 };
 
+const getUser = async (id) => {
+  const query = 'SELECT * FROM users WHERE id = $1;';
+  const { rows} = await pool.query(query, [id]);
+  return rows[0];
+};
+
 const checkEmailUser = async (email) => {
   const query = 'SELECT email FROM users WHERE email = $1';
   const { rowCount } = await pool.query(query, [email]);
@@ -34,6 +40,7 @@ const removeUser = async (id) => {
 
 export const usersModel = {
   getUsers,
+  getUser,
   checkEmailUser,
   newUser,
   updateUser,

@@ -16,6 +16,25 @@ const getUsers = async (req, res) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      throw { code: 400, message: 'Id del usuario no proporcionado.' };
+    }
+
+    const data = await usersModel.getUser(id)
+
+    return data ?
+      res.status(200).json({ ok: true, data }) :
+      res.status(200).json({ ok: true, message: 'El usuario no existe.' });
+     
+  } catch (error) {
+    const { status, message } = handleError(error.code, error.message);
+    return res.status(status).json({ ok: false, message });
+  }
+};
+
 const newUser = async (req, res) => {
   try {
     const { name, email, phone, age, region, commune } = req.body;
@@ -39,7 +58,8 @@ const newUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { id, name, email, phone, age, region, commune } = req.body;
+    const { id } = req.params;
+    const { name, email, phone, age, region, commune } = req.body;
 
     if (!id) {
       throw { code: 400, message: 'Id del usuario no proporcionado.' };
@@ -58,7 +78,7 @@ const updateUser = async (req, res) => {
 
 const removeUser = async (req, res) => {
   try {
-    const { id } = req.body;
+    const { id } = req.params;
     if (!id) {
       throw { code: 400, message: 'Id del usuario no proporcionado.' };
     }
@@ -77,6 +97,7 @@ const removeUser = async (req, res) => {
 
 export const usersController = {
   getUsers,
+  getUser,
   newUser,
   updateUser,
   removeUser,
