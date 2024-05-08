@@ -4,7 +4,7 @@ import { handleError } from "../utilities/handleError.js";
 export const verifyDataUser = (req, res, next) => {
     try {
       const { name, email, phone, age, region, commune } = req.body;
-      if (!name || !email || !phone || !age || !region || !commune) {
+      if (!name || !email || !phone || !region || !commune) {
         throw { code: 400, message: 'Faltan campos requeridos.' };
       }
   
@@ -18,11 +18,6 @@ export const verifyDataUser = (req, res, next) => {
         throw { code: 400, message: 'El número de telefono proporcionado no es válido.' };
       }
 
-      const isAgeValid = /^[0-9]+$/.test(age);
-      if (!isAgeValid) {
-        throw { code: 400, message: 'La edad debe ser numérico.' };
-      }
-  
       next();
     } catch (error) {
       const { status, message } = handleError(error.code, error.message);

@@ -37,14 +37,14 @@ const getUser = async (req, res) => {
 
 const newUser = async (req, res) => {
   try {
-    const { name, email, phone, age, region, commune } = req.body;
+    const { name, email, phone, region, commune } = req.body;
 
     const checkEmail = await usersModel.checkEmailUser(email)
     if (checkEmail) {
       throw { code: 400, message: `El email ${email} ya está registrado.` };
     }
 
-    const result = await usersModel.newUser( name, email, phone, age, region, commune );
+    const result = await usersModel.newUser( name, email, phone, region, commune );
     if (!result) {
       throw { code: 400, message: 'Registro de usuario fallido.' };
     }

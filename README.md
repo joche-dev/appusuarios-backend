@@ -41,8 +41,7 @@ CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE,
-  phone VARCHAR(20) NOT NULL,
-  age INT NOT NULL,
+  phone VARCHAR(20) NOT NULL
   region VARCHAR(100) NOT NULL,
   commune VARCHAR(100) NOT NULL
 );
@@ -69,7 +68,6 @@ CREATE TABLE IF NOT EXISTS users (
       "name": "Juan Perez",
       "email": "juan.perez@example.com",
       "phone": "912345678",
-      "age": 30,
       "region": "Metropolitana de Santiago",
       "commune": "La Florida"
     },
@@ -92,7 +90,6 @@ CREATE TABLE IF NOT EXISTS users (
     "name": "Juan Perez",
     "email": "juan.perez@example.com",
     "phone": "912345678",
-    "age": 30,
     "region": "Metropolitana de Santiago",
     "commune": "La Florida"
   }
@@ -109,7 +106,6 @@ CREATE TABLE IF NOT EXISTS users (
   "name": "Juan Perez",
   "email": "juan.perez@example.com",
   "phone": "912345678",
-  "age": 30,
   "region": "Metropolitana de Santiago",
   "commune": "La Florida"
 }
@@ -135,7 +131,6 @@ CREATE TABLE IF NOT EXISTS users (
   "name": "Juan Perez",
   "email": "juan.perez@example.com",
   "phone": "912345678",
-  "age": 30,
   "region": "Metropolitana de Santiago",
   "commune": "La Florida"
 }
