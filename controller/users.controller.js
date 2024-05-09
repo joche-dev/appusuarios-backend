@@ -59,13 +59,13 @@ const newUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email, phone, age, region, commune } = req.body;
+    const { name, email, phone, region, commune } = req.body;
 
     if (!id) {
       throw { code: 400, message: 'Id del usuario no proporcionado.' };
     }
 
-    const result = await usersModel.updateUser(id, name, email, phone, age, region, commune);
+    const result = await usersModel.updateUser(id, name, email, phone, region, commune);
     if (!result) {
       throw { code: 400, message: 'Actualización de usuario fallido.' };
     }

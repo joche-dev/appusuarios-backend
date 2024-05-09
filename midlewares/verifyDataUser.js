@@ -3,7 +3,7 @@ import { handleError } from "../utilities/handleError.js";
 
 export const verifyDataUser = (req, res, next) => {
     try {
-      const { name, email, phone, age, region, commune } = req.body;
+      const { name, email, phone, region, commune } = req.body;
       if (!name || !email || !phone || !region || !commune) {
         throw { code: 400, message: 'Faltan campos requeridos.' };
       }
